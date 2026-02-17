@@ -1,0 +1,355 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Mode Selection */
+.mode-selection {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.mode-selection h1 {
+    color: #764ba2;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.mode-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    margin: 10px;
+    border-radius: 50px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.mode-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* Envelope Styling */
+.envelope-wrapper {
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.envelope {
+    width: 400px;
+    height: 280px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.envelope.open {
+    transform: rotateX(180deg);
+}
+
+.envelope-front {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.envelope-flap {
+    width: 100%;
+    height: 140px;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    clip-path: polygon(0 100%, 50% 0%, 100% 100%);
+    position: absolute;
+    top: 0;
+    transition: transform 0.6s;
+    transform-origin: top center;
+    box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.envelope.open .envelope-flap {
+    transform: rotateX(-180deg);
+}
+
+.envelope-content-front {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
+}
+
+.recipient {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Letter Container */
+.letter-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 500px;
+}
+
+.letter {
+    background: #fef8f0;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    position: relative;
+    border: 2px solid #daa520;
+}
+
+.letter::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50px;
+    width: 100px;
+    height: 20px;
+    background: repeating-linear-gradient(
+        90deg,
+        #ff6b6b 0px,
+        #ff6b6b 10px,
+        white 10px,
+        white 20px
+    );
+    border-radius: 5px;
+}
+
+.letter-content {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #333;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-bottom: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.close-letter {
+    background: #764ba2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.close-letter:hover {
+    background: #667eea;
+}
+
+/* Editor */
+.editor-wrapper {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.editor-header h2 {
+    color: #764ba2;
+    font-size: 1.8em;
+}
+
+.back-btn {
+    background: #999;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+}
+
+.back-btn:hover {
+    background: #666;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.editor-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.save-btn,
+.preview-btn,
+.copy-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+.save-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.save-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.preview-btn {
+    background: #4ecdc4;
+    color: white;
+}
+
+.preview-btn:hover {
+    background: #45b7aa;
+}
+
+.copy-btn {
+    background: #95e1d3;
+    color: #333;
+}
+
+.copy-btn:hover {
+    background: #7fd4c1;
+}
+
+.message {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    min-height: 20px;
+    font-weight: 600;
+}
+
+.message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Utility */
+.hidden {
+    display: none !important;
+}
+
+.mode-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .envelope {
+        width: 300px;
+        height: 210px;
+    }
+
+    .letter {
+        padding: 20px;
+    }
+
+    .editor-wrapper {
+        padding: 20px;
+    }
+
+    .editor-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .mode-btn {
+        display: block;
+        width: 100%;
+    }
+
+    .editor-actions {
+        flex-direction: column;
+    }
+
+    .save-btn,
+    .preview-btn,
+    .copy-btn {
+        width: 100%;
+    }
+  }
