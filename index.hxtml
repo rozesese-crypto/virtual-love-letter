@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Love Letter 💌</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Mode Selection -->
+        <div id="modeSelection" class="mode-selection hidden">
+            <h1>Choose Mode</h1>
+            <button class="mode-btn" id="viewBtn">View Letter</button>
+            <button class="mode-btn" id="createBtn">Create Letter</button>
+        </div>
+
+        <!-- View Mode -->
+        <div id="viewMode" class="mode-container">
+            <div class="envelope-wrapper">
+                <div class="envelope" id="envelope">
+                    <div class="envelope-front">
+                        <div class="envelope-flap"></div>
+                        <div class="envelope-content-front">
+                            <p class="recipient">To: My Crush 💕</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="letter-container hidden" id="letterContainer">
+                    <div class="letter">
+                        <div class="letter-content" id="letterContent">
+                            <p>Loading...</p>
+                        </div>
+                        <button class="close-letter" id="closeLetter">Close Letter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Create/Edit Mode -->
+        <div id="createMode" class="mode-container hidden">
+            <div class="editor-wrapper">
+                <div class="editor-header">
+                    <h2>Create Your Love Letter ✍️</h2>
+                    <button class="back-btn" id="backBtn">← Back</button>
+                </div>
+                
+                <div class="editor-form">
+                    <div class="form-group">
+                        <label for="recipientName">Recipient Name:</label>
+                        <input type="text" id="recipientName" placeholder="e.g., My Crush" value="My Crush">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="letterText">Your Message:</label>
+                        <textarea id="letterText" placeholder="Write your heartfelt message here..." rows="12"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="senderName">From:</label>
+                        <input type="text" id="senderName" placeholder="Your name">
+                    </div>
+
+                    <div class="editor-actions">
+                        <button class="save-btn" id="saveLetter">💾 Save Letter</button>
+                        <button class="preview-btn" id="previewLetter">👁️ Preview</button>
+                        <button class="copy-btn" id="copyLink">🔗 Copy Share Link</button>
+                    </div>
+                </div>
+
+                <div class="message" id="message"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
